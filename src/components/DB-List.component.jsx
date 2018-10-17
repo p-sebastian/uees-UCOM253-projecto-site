@@ -33,14 +33,21 @@ class DBList extends Component {
       <ListItem key={id_empleado}>
         <ListItemText
           style={{ textTransform: 'capitalize' }}
-          classes={{ primary: 'DB-item-primary' }}
           primary={`${nombre} ${apellido}`}
           secondary={`${email}; ${provincia}, ${ciudad}`} 
         />
-        <p style={{ textTransform: 'capitalize', color: '#03a9f4' }}>{cargo}</p>
+        <p style={{ textTransform: 'capitalize', color: color(cargo) }}>{cargo}</p>
       </ListItem>
     ));
   }
 }
 
+const color = (cargo) => {
+  switch (cargo) {
+    case 'gerente': return '#03a9f4';
+    case 'manager': return '#009688';
+    case 'servicio': return '#e91e63';
+    default: return '#03a9f4';
+  }
+}
 export default DBList;
