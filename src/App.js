@@ -31,10 +31,10 @@ class App extends Component {
             alignItems="center"
             spacing={8}
           >
-            <Grid xs={6} item>
+            <Grid md={6} sm={12} xs={12} item>
               <DBForm onInsert={this._reload} />
             </Grid>
-            <Grid xs={6} item>
+            <Grid md={6} sm={12} xs={12} item>
               <DBList ref={this._ref} />
             </Grid>
           </Grid>
