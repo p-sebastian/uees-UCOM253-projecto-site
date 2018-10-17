@@ -80,11 +80,11 @@ class DBForm extends Component {
 
 const styles = {
   cardTitleStyle: {
-    color: '#636363',
+    color: '#00695f',
     textAlign: 'center'
   },
   buttonStyle: {
-    backgroundColor: '#ff6100',
+    backgroundColor: '#03a9f4',
     color: 'white',
     padding: '16px',
     borderRadius: 0

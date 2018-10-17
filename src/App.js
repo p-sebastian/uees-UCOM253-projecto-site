@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { 
   Grid, 
   withStyles,
-  Button
+  AppBar,
+  Toolbar
 } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import { DBForm, DBList } from './components';
 
 class App extends Component {
@@ -12,21 +14,31 @@ class App extends Component {
     this._ref = React.createRef();
   }
   render() {
+    const { appBarStyle } = this.props.classes;
     return (
-      <div className={this.props.classes.appStyle}>
-        <Grid
-          container
-          justify="space-evenly"
-          alignItems="center"
-          spacing={8}
-        >
-          <Grid xs={6} item>
-            <DBForm onInsert={this._reload} />
+      <div>
+        <AppBar classes={{ colorPrimary: appBarStyle }} color="primary" position="static">
+          <Toolbar>
+            <Typography variant="h6" color="inherit">
+              Photos
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <div className={this.props.classes.appStyle}>
+          <Grid
+            container
+            justify="space-evenly"
+            alignItems="center"
+            spacing={8}
+          >
+            <Grid xs={6} item>
+              <DBForm onInsert={this._reload} />
+            </Grid>
+            <Grid xs={6} item>
+              <DBList ref={this._ref} />
+            </Grid>
           </Grid>
-          <Grid xs={6} item>
-            <DBList ref={this._ref} />
-          </Grid>
-        </Grid>
+        </div>
       </div>
     );
   }
@@ -38,7 +50,11 @@ class App extends Component {
 }
 
 const styles = {
+  appBarStyle: {
+    background: '#009688'
+  },
   appStyle: {
+    marginTop: 50,
     padding: 15,
     display: 'flex',
     flexGrow: '1',
