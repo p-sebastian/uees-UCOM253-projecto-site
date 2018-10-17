@@ -20,7 +20,7 @@ class App extends Component {
         <AppBar classes={{ colorPrimary: appBarStyle }} color="primary" position="static">
           <Toolbar>
             <Typography variant="h6" color="inherit">
-              Photos
+              Projecto Base de Datos
             </Typography>
           </Toolbar>
         </AppBar>
