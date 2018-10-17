@@ -45,7 +45,7 @@ class DBForm extends Component {
     return (
       <div>
         <Card raised>
-          <CardHeader classes={{ title: cardTitleStyle }} title="Para mas informacion ingresa tus datos" />
+          <CardHeader classes={{ title: cardTitleStyle }} title="Ingreso de Empleados" />
           <CardContent>
             <form noValidate autoComplete="off">
               <TextField name="nombre" label="Nombre" onChange={this._onSelect} fullWidth required />
