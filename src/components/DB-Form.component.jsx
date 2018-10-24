@@ -58,7 +58,7 @@ class DBForm extends Component {
               <FormHelperText>* Todos los campos son requeridos.</FormHelperText>
             </form>
           </CardContent>
-          <Button classes={{ root: buttonStyle }} onClick={this._submit} disabled={this._disabled} fullWidth>COMENZAR AHORA</Button>
+          <Button classes={{ root: buttonStyle }} onClick={this._submit} disabled={this._disabled} fullWidth>INGRESAR USUARIO</Button>
         </Card>
       </div>
     )
