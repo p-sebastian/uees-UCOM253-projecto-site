@@ -30,8 +30,12 @@ class DBList extends Component {
     )
   }
   _renderItems() {
-    return this.state.items.map(({ id_empleado, nombre, apellido, provincia, ciudad, email, cargo }) => (
-      <ListItem key={id_empleado}>
+    return this.state.items.map(({ id_empleado, nombre, apellido, provincia, ciudad, email, cargo, id_persona }) => (
+      <ListItem 
+        key={id_empleado} 
+        onClick={() => this.props.onClick({ id_persona, cargo })} 
+        button
+      >
         <ListItemText
           style={{ textTransform: 'capitalize' }}
           primary={`${nombre} ${apellido}`}

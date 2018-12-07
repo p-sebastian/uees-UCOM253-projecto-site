@@ -3,15 +3,21 @@ import {
   Grid, 
   withStyles,
   AppBar,
-  Toolbar
+  Toolbar,
+  Button
 } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 import Typography from '@material-ui/core/Typography';
-import { DBForm, DBList, DBProduct } from './components';
+import { DBForm, DBList, DBProduct, DBProductForm } from './components';
+import { BLUE } from './components/theme';
 
 class App extends Component {
+  state = { selected: null, isOpen: false };
+
   constructor(props) {
     super(props);
     this._ref = React.createRef();
+    this._tableRef = React.createRef();
   }
   render() {
     const { appBarStyle, productStyle } = this.props.classes;
@@ -24,6 +30,8 @@ class App extends Component {
             </Typography>
           </Toolbar>
         </AppBar>
+        {this._renderButton()}
+      
         <div className={this.props.classes.appStyle}>
           <Grid
             container
@@ -35,20 +43,48 @@ class App extends Component {
               <DBForm onInsert={this._reload} />
             </Grid>
             <Grid md={6} sm={12} xs={12} item>
-              <DBList ref={this._ref} />
+              <DBList onClick={this._showAndFilter} ref={this._ref} />
             </Grid>
           </Grid>
         </div>
         <div className={productStyle}>
-          <DBProduct />
+          <DBProduct ref={this._tableRef} />
         </div>
+        <DBProductForm
+          open={this.state.isOpen}
+          persona={this.state.selected}
+          onClose={this._onDialogClose}
+        />
       </div>
     );
+  }
+  _renderButton() {
+    const { selected } = this.state;
+    if (selected && selected.cargo === 'gerente' ) {
+      return (
+        <Button 
+          variant="fab" 
+          className={this.props.classes.fabStyle}
+          onClick={() => this.setState({ isOpen: true })}
+        >
+          <AddIcon style={{ color: 'white' }} />        
+        </Button>
+      );
+    }
+  }
+  _onDialogClose = () => {
+    this.setState({ isOpen: false });
+    this._reload();
   }
   _reload = () => {
     console.info('reloaded');
     // reload list
     this._ref.current.componentWillMount();
+    this._tableRef.current.componentWillMount();
+  }
+  _showAndFilter = (selected) => {
+    this.setState({ selected })
+    console.info(selected);
   }
 }
 
@@ -66,6 +102,12 @@ const styles = {
   },
   productStyle: {
     padding: 15,
+  },
+  fabStyle: {
+    position: 'absolute',
+    right: 10,
+    top: 35,
+    background: BLUE
   }
 };
 
