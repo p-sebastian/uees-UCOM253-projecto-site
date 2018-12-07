@@ -6,7 +6,7 @@ import {
   Toolbar
 } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import { DBForm, DBList } from './components';
+import { DBForm, DBList, DBProduct } from './components';
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class App extends Component {
     this._ref = React.createRef();
   }
   render() {
-    const { appBarStyle } = this.props.classes;
+    const { appBarStyle, productStyle } = this.props.classes;
     return (
       <div>
         <AppBar classes={{ colorPrimary: appBarStyle }} color="primary" position="static">
@@ -39,6 +39,9 @@ class App extends Component {
             </Grid>
           </Grid>
         </div>
+        <div className={productStyle}>
+          <DBProduct />
+        </div>
       </div>
     );
   }
@@ -60,6 +63,9 @@ const styles = {
     flexGrow: '1',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  productStyle: {
+    padding: 15,
   }
 };
 

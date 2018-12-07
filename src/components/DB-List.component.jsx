@@ -6,6 +6,7 @@ import {
   ListItemText
 } from '@material-ui/core';
 import { select } from '../request';
+import { BLUE, PINK, TEAL} from './theme';
 
 class DBList extends Component {
   state = {
@@ -44,10 +45,10 @@ class DBList extends Component {
 
 const color = (cargo) => {
   switch (cargo) {
-    case 'gerente': return '#03a9f4';
-    case 'manager': return '#009688';
-    case 'servicio': return '#e91e63';
-    default: return '#03a9f4';
+    case 'gerente': return BLUE;
+    case 'manager': return TEAL;
+    case 'servicio': return PINK;
+    default: return BLUE;
   }
 }
 export default DBList;
